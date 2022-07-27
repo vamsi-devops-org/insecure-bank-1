@@ -25,8 +25,7 @@ jobs:
     - name: BlackDuck Scan
       uses: blackducksoftware/github-action@v2
       with:
-        args: --detect.project.name=Pipeline_test --detect.tools.excluded="DETECTOR" --blackduck.trust.cert=true --detect.risk.report.pdf=true --detect.project.version.name=2
-      
+        args: --detect.project.name=Pipeline_test --detect.tools.excluded="DETECTOR" --blackduck.trust.cert=true --detect.risk.report.pdf=true --detect.project.version.name=2 --detect.polaris.enabled=true --polaris.access.token=${{ secrets.POLARIS_SERVER_URL }} --polaris.url=${{ secrets.POLARIS_ACCESS_TOKEN }}
     #- run: ls 
     #- name: Upload Results
     #  uses: actions/upload-artifact@v2

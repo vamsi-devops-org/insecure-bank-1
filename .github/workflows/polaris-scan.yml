@@ -17,6 +17,7 @@ jobs:
         with: 
           server_url: ${{ secrets.POLARIS_SERVER_URL }} # (Required)
           access_token: ${{ secrets.POLARIS_ACCESS_TOKEN }} # (Required)
+          
           total_issues: 0 # (Not required)
           new_issues: 0 # (Not required)
           cli_scan_json_file: .synopsys/polaris/cli-scan.json # (Not required)

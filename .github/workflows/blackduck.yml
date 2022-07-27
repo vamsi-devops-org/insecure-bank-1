@@ -9,7 +9,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
     env:
           DETECT_BLACKDUCK_RAPID_COMPARE_MODE: BOM_COMPARE_STRICT
           BLACKDUCK_URL: "${{ secrets.BLACKDUCK_URL }}"
@@ -25,7 +24,7 @@ jobs:
         distribution: 'adopt'
     - name: BlackDuck Scan
       uses: blackducksoftware/github-action@v2
-     with:
+      with:
         args: --detect.project.name=Pipeline_test --detect.tools.excluded="DETECTOR" --blackduck.trust.cert=true --detect.risk.report.pdf=true --detect.project.version.name=2
       
     #- run: ls 

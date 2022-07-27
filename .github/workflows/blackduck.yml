@@ -14,6 +14,8 @@ jobs:
           BLACKDUCK_URL: "${{ secrets.BLACKDUCK_URL }}"
           BLACKDUCK_API_TOKEN: ${{ secrets.BLACKDUCK_API_TOKEN }}
           detect-version: "7.13.2"
+          server_url: ${{ secrets.POLARIS_SERVER_URL }} # (Required)
+          access_token: ${{ secrets.POLARIS_ACCESS_TOKEN }} # (Required)
           
     steps:
     - uses: actions/checkout@v3
@@ -25,7 +27,11 @@ jobs:
     - name: BlackDuck Scan
       uses: blackducksoftware/github-action@v2
       with:
-        args: --detect.project.name=Pipeline_test --detect.tools.excluded="DETECTOR" --blackduck.trust.cert=true --detect.risk.report.pdf=true --detect.project.version.name=2 --detect.polaris.enabled=true --polaris.access.token=${{ secrets.POLARIS_SERVER_URL }} --polaris.url=${{ secrets.POLARIS_ACCESS_TOKEN }}
+        args: --detect.project.name=Pipeline_test --detect.tools.excluded="DETECTOR" --blackduck.trust.cert=true --detect.risk.report.pdf=true --detect.project.version.name=2 --detect.polaris.enabled=true
+    #- name: Run Polaris tests
+     # uses: prernagarg05/polaris-action@v2
+    
+    
     #- run: ls 
     #- name: Upload Results
     #  uses: actions/upload-artifact@v2

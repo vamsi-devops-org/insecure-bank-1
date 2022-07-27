@@ -3,7 +3,7 @@ install:
   coverity:
     version: latest
 project:
-  name: "sig-devsecops/insecure-bank"
+  name: ""
   branch: "origin/master"
   revision:
     name: "sig-devsecops/insecure-bank"

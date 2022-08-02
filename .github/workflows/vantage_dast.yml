@@ -1,1 +1,41 @@
+name: CI
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: create container
+        run: docker build . --file Dockerfile -t whs:insecure-bank
+        
+      - name: start insecure bank 
+        run: |
+          docker run -d -p 3005:80 whs:insecure-bank
+          wget --quiet --wait=3 http://localhost:3005/install.php?install=yes
+      - name: run security test        
+        run: |
+          wget https://github.com/whitehatsec/vantage-prevent-distributions/releases/latest/download/VantagePrevent-Ubuntu-20_04.deb          
+          sudo apt-get install -f ./VantagePrevent-Ubuntu-20_04.deb 
+          sudo dast-attacker-cli -allowed-host=http://localhost:3005 -license-key=${{ secrets.VANTAGE_LICENSE_KEY }} -output-json=results.json -output-html=results.html .scan/*.har
+          #EXAMPLE OF FAILING BUILD ON THRESHOLD
+          #sudo dast-attacker-cli -allowed-host=http://localhost:3005 -license-key=${{ secrets.VANTAGE_LICENSE_KEY }} -fail-on-severity=medium  -output-json=results.json -output-html=results.html .scan/*.har
+          
+      - name: "upload scan results"
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v1
+        with:
+          name: Vantage Prevent - JSON Scan Report
+          path: Vantage_Report.json
+
+      - name: "upload html report"
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v1
+        with:
+          name: Vantage Prevent - HTML Scan Report
+          path: Vantage_Report.html

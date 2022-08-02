@@ -24,9 +24,9 @@ jobs:
     - name: Upload build artifacts       
       uses: actions/upload-artifact@v2      
       with:        
-          name: insecure-bank1.war        
-          path: target/insecure-bank1.war
+          name: insecure-bank.war        
+          path: target/insecure-bank.war
     - name: Install Vantage
       run: wget https://github.com/whitehatsec/vantage-prevent-distributions/releases/latest/download/VantagePrevent-Ubuntu-22_04.deb
     - name: Vantage location
-      run: ls
+      run: pwd

@@ -35,5 +35,5 @@ jobs:
     - run: sudo apt-get install -y -f [./VantagePrevent-Ubuntu-22_04.deb | /home/runner/work/insecure-bank/insecure-bank]
     
     - name: Vantage installed location
-      run: ls
+    - run: ls
       

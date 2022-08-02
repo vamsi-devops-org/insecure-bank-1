@@ -36,7 +36,7 @@ jobs:
       
     - name: Install Vantage
       #run: sudo apt-get install -y -f [/home/runner/work/insecure-bank/insecure-bank/VantagePrevent-Ubuntu-22_04.deb | /home/runner/work/insecure-bank/insecure-bank]
-      run: sudo dpkg -i VantagePrevent-Ubuntu-22_04.deb
+      
     - name: install
       run: sudo apt-get install -y -f VantagePrevent-Ubuntu-22_04.deb
     - name: Vantage installed location

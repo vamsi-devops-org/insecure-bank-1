@@ -36,7 +36,7 @@ jobs:
       - name: start insecure bank 
         run: |
           docker run -d -p 8083:8080 whs:insecure-bank
-          wget --quiet --wait=3 http://localhost:3005/install.php?install=yes
+          #wget --quiet --wait=3 http://localhost:3005/install.php?install=yes
       - name: run security test        
         run: |
           wget https://github.com/whitehatsec/vantage-prevent-distributions/releases/latest/download/VantagePrevent-Ubuntu-20_04.deb          

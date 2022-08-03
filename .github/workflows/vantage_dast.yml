@@ -46,14 +46,14 @@ jobs:
           #sudo dast-attacker-cli -allowed-host=http://localhost:3005 -license-key=${{ secrets.VANTAGE_LICENSE_KEY }} -fail-on-severity=medium  -output-json=results.json -output-html=results.html .scan/*.har
           
       - name: "upload scan results"
-        if: ${{ always() }}
+        #if: ${{ always() }}
         uses: actions/upload-artifact@v1
         with:
           name: Vantage Prevent - JSON Scan Report
           path: Vantage_Report.json
 
       - name: "upload html report"
-        if: ${{ always() }}
+        #if: ${{ always() }}
         uses: actions/upload-artifact@v1
         with:
           name: Vantage Prevent - HTML Scan Report

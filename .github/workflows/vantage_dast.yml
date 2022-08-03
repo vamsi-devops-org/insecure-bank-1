@@ -50,7 +50,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: Vantage Prevent - JSON Scan Report
-          path: Vantage_Report.json
+          path: /home/runner/work/insecure-bank/insecure-bank/
 
       - name: "upload html report"
         #if: ${{ always() }}

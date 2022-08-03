@@ -57,4 +57,4 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: Vantage Prevent - HTML Scan Report
-          path: Vantage_Report.html
+          path: /home/runner/work/insecure-bank/insecure-bank/

@@ -24,14 +24,14 @@ jobs:
            name: insecure-bank.war        
            path: target/insecure-bank.war
            
-      - name: Check1
-        run: ls target
+      #- name: Check1
+       # run: ls target
 
       - name: create container
         run: docker build . --file Dockerfile -t whs:insecure-bank
         
-      - name: Check2
-        run: ls
+      #- name: Check2
+      #  run: ls
         
       - name: start insecure bank 
         run: |

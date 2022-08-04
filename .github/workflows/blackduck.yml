@@ -30,15 +30,9 @@ jobs:
       with:
         args: --detect.project.name=Pipeline_test --detect.tools.excluded="DETECTOR" --blackduck.trust.cert=true --detect.risk.report.pdf=true --detect.project.version.name=1
         
-    - name: Run Polaris tests
-      uses: prernagarg05/polaris-action@v2
+    - run: ls 
+    - name: Upload Results
+      uses: actions/upload-artifact@v2
       with:
-        args: --detect.polaris.enabled=true --polaris.access.token=${{ secrets.POLARIS_ACCESS_TOKEN }} --polaris.url=${{ secrets.POLARIS_SERVER_URL }}
-    
-    
-    #- run: ls 
-    #- name: Upload Results
-    #  uses: actions/upload-artifact@v2
-    #  with:
-    #    name: Blackduck
-     #   path: /home/runner/work/mvnwebapp1/mvnwebapp1/
+        name: Blackduck
+        path: /home/runner/work/insecure-bank/insecure-bank/

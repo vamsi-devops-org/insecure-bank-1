@@ -1,4 +1,4 @@
-name: CI
+name: Vantage DAST Scan
 on:
   push:
     branches: [ master ]

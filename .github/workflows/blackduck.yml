@@ -25,7 +25,7 @@ jobs:
         distribution: 'adopt'
         
     - name: BlackDuck Scan
-      uses: synopsys-sig/detect-action@v2
+      uses: synopsys-sig/detect-action@v0.3.0
       with:
         args: --detect.project.name=Pipeline_test --detect.tools.excluded="DETECTOR" --blackduck.trust.cert=true --detect.risk.report.pdf=true --detect.default.project.version.scheme=timestamp
         #--detect.project.version.name=3

@@ -9,13 +9,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    #env:
+    env:
           #DETECT_BLACKDUCK_RAPID_COMPARE_MODE: BOM_COMPARE_STRICT
-          #BLACKDUCK_URL: "${{ secrets.BLACKDUCK_URL }}"
-          #BLACKDUCK_API_TOKEN: ${{ secrets.BLACKDUCK_API_TOKEN }}
-          #BLACKDUCK_URL: "${{ secrets.BLACKDUCKURL }}"
-          #BLACKDUCK_API_TOKEN: ${{ secrets.BLACKDUCKAPITOKEN }}
-          #detect-version: "7.13.2"
+          BLACKDUCK_URL: "${{ secrets.BLACKDUCK_URL }}"
+          BLACKDUCK_API_TOKEN: ${{ secrets.BLACKDUCK_API_TOKEN }}
+          detect-version: "7.13.2"
           
           
     steps:
@@ -29,8 +27,7 @@ jobs:
     - name: BlackDuck Scan
       uses: blackducksoftware/github-action@v2
       with:
-        args: --blackduck.url=${{ secrets.BLACKDUCKURL }} --blackduck.api.token=${{ secrets.BLACKDUCKAPITOKEN }}
-        #--detect.project.name=Pipeline_test --detect.tools.excluded="DETECTOR" --blackduck.trust.cert=true --detect.risk.report.pdf=true --detect.default.project.version.scheme=timestamp
+        args: --detect.project.name=Pipeline_test --detect.tools.excluded="DETECTOR" --blackduck.trust.cert=true --detect.risk.report.pdf=true --detect.default.project.version.scheme=timestamp
         #--detect.project.version.name=3
         
     - run: ls 

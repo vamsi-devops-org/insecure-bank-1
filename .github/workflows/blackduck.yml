@@ -27,7 +27,7 @@ jobs:
     - name: BlackDuck Scan
       uses: blackducksoftware/github-action@v2
       with:
-        args: --detect.project.name=Pipeline_test --detect.tools.excluded="DETECTOR" --blackduck.trust.cert=true --detect.risk.report.pdf=true --detect.default.project.version.scheme=timestamp
+        args: --detect.project.name=Test_Sample --detect.tools.excluded="DETECTOR" --blackduck.trust.cert=true --detect.risk.report.pdf=true --detect.default.project.version.scheme=timestamp
         #--detect.project.version.name=3
         
     - run: ls 
